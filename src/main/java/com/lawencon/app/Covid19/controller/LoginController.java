@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.lawencon.app.Covid19.model.Login;
 import com.lawencon.app.Covid19.service.LoginService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/login")
 public class LoginController extends BaseController<Login>{
 	
@@ -44,10 +46,10 @@ public class LoginController extends BaseController<Login>{
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 	
-	@PostMapping("/update/{id}/{user}/{pass}")
-	public ResponseEntity<?> getUpdate(@PathVariable("id") int id, @PathVariable("user") String user, @PathVariable("pass") String pass){
+	@PostMapping("/update/{id}/{user}/{pass}/{role}")
+	public ResponseEntity<?> getUpdate(@PathVariable("id") int id, @PathVariable("user") String user, @PathVariable("pass") String pass, @PathVariable("role") String role){
 		try {
-			loginService.update(id, user, pass);
+			loginService.update(id, user, pass, role);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Gagal Update", HttpStatus.BAD_REQUEST);
 		}

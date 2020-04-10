@@ -12,7 +12,13 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLogin;
-	private String username, password;
+	private String username, password, role;
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getIdLogin() {
 		return idLogin;
 	}

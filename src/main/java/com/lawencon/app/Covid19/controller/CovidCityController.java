@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.lawencon.app.Covid19.model.CovidCity;
 import com.lawencon.app.Covid19.service.CovidCityService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/city")
 public class CovidCityController extends BaseController<CovidCity> {
 
@@ -47,6 +49,16 @@ public class CovidCityController extends BaseController<CovidCity> {
 	
 	@PostMapping("/update/{id}/{cityName}/{caseByCity}/{deathsByCity}/{recovered}")
 	public ResponseEntity<?> getUpdate(@PathVariable("id") int id, @PathVariable("cityName")String cityName, @PathVariable("caseByCity") int caseByCity, @PathVariable("deathsByCity") int deathsByCity, @PathVariable("recovered") int recovered){
+		try {
+			covidCityService.updateCity(id, cityName, caseByCity, deathsByCity,recovered);
+		} catch (Exception e) {
+			return new ResponseEntity<>("Failed to Update", HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>("Success", HttpStatus.OK);
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<?> getUpdateBody(@RequestBody int id, @RequestBody String cityName, @RequestBody int caseByCity, @RequestBody int deathsByCity, @RequestBody int recovered){
 		try {
 			covidCityService.updateCity(id, cityName, caseByCity, deathsByCity,recovered);
 		} catch (Exception e) {

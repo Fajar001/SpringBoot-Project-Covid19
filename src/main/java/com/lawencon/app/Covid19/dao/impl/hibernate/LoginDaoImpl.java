@@ -29,7 +29,7 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 	}
 
 	@Override
-	public Login update(int id, String user, String pass) throws Exception {
+	public Login update(int id, String user, String pass, String role) throws Exception {
 		// TODO Auto-generated method stub
 		Query q = em.createQuery("from Login where idLogin = :idParam");
 		q.setParameter("idParam", id);
@@ -37,6 +37,7 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 		log = (Login) q.getSingleResult();
 		log.setUsername(user);
 		log.setPassword(pass);
+		log.setRole(role);
 		em.merge(log);
 		return log;
 	}

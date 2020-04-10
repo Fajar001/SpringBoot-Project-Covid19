@@ -48,9 +48,9 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String update(int id, String user, String pass) throws Exception {
+	public String update(int id, String user, String pass, String role) throws Exception {
 		// TODO Auto-generated method stub
-		loginDao.update(id, user, pass);
+		loginDao.update(id, user, pass, role);
 		return "Failed...";
 	}
 

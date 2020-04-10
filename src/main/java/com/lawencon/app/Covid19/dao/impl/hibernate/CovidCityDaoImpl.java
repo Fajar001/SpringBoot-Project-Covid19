@@ -49,5 +49,4 @@ public class CovidCityDaoImpl extends BaseHibernate implements CovidCityDao{
 		em.remove(city);
 		return "Deleted...";
 	}
-	
 }
