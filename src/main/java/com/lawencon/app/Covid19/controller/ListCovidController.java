@@ -61,7 +61,7 @@ public class ListCovidController extends BaseController<ListCovid>{
 		try {
 			listCovidService.deleteById(id);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Gagal Deleted", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Failed to Deleted", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}

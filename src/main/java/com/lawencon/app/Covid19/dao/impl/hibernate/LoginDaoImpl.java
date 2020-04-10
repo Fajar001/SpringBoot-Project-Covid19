@@ -53,13 +53,6 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 		em.remove(log);
 		return "[USERNAME] AND [PASSWORD] DELETED...";
 	}
-
-	@Override
-	public List<Login> deleteAll(Login log) throws Exception {
-		// TODO Auto-generated method stub
-		em.remove(log);
-		return null;
-	}
 	
 	@SuppressWarnings("unchecked")
 	@Override

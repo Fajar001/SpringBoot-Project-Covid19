@@ -41,7 +41,7 @@ public class LoginController extends BaseController<Login>{
 			Login login = readValue(content, Login.class);
 			loginService.insertUser(login);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Gagal Insert", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Failed to Insert", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
@@ -51,7 +51,7 @@ public class LoginController extends BaseController<Login>{
 		try {
 			loginService.update(id, user, pass, role);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Gagal Update", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Failed to Update", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
@@ -61,7 +61,7 @@ public class LoginController extends BaseController<Login>{
 		try {
 			loginService.deleteById(id);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Gagal Deleted", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Failed to Deleted", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}

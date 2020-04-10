@@ -26,7 +26,7 @@ public class CovidCityController extends BaseController<CovidCity> {
 	private CovidCityService covidCityService;
 	
 	@GetMapping("/show")
-	public ResponseEntity<List<CovidCity>> getList(){
+	public ResponseEntity<?> getList(){
 		List<CovidCity> listCity = new ArrayList<>();
 		try {
 			listCity = covidCityService.findAll();
@@ -72,7 +72,7 @@ public class CovidCityController extends BaseController<CovidCity> {
 		try {
 			covidCityService.deleteById(id);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Gagal Deleted", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Failed to Deleted", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
