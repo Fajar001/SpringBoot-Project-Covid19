@@ -1,6 +1,7 @@
 package com.lawencon.app.Covid19.dao.impl.hibernate;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Query;
 
@@ -48,5 +49,24 @@ public class CovidCityDaoImpl extends BaseHibernate implements CovidCityDao{
 		city.setIdCovidCity(id);
 		em.remove(city);
 		return "Deleted...";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CovidCity> findByid(int id) throws Exception {
+		Query q = em.createQuery("from CovidCity where idCovidCity = :idParam");
+		q.setParameter("idParam", id);
+		return q.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<?> findAllTotal() throws Exception {
+		Query q = em.createNativeQuery("select sum(case_by_city) as Total_cases, sum(deaths_by_city) as Total_deaths, sum(recovered) from covid_city");
+		List<Map<String, Object>> listResult = bMapperHibernate(q.getResultList(), "Total_cases", "Total_deaths", "Total_Recovered");
+		if(!listResult.isEmpty()) {
+			return listResult;
+		}
+		return null;
 	}
 }

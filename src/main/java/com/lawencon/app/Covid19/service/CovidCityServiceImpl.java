@@ -38,4 +38,14 @@ public class CovidCityServiceImpl implements CovidCityService{
 	public String deleteById(int id) throws Exception {
 		return covidCityDao.deleteById(id);
 	}
+
+	@Override
+	public List<CovidCity> findById(int id) throws Exception {
+		return covidCityDao.findByid(id);
+	}
+
+	@Override
+	public List<?> findAllTotal() throws Exception {
+		return covidCityDao.findAllTotal();
+	}
 }

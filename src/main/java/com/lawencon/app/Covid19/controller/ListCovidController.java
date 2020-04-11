@@ -17,7 +17,7 @@ import com.lawencon.app.Covid19.model.ListCovid;
 import com.lawencon.app.Covid19.service.ListCovidService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/Home")
 public class ListCovidController extends BaseController<ListCovid>{
 	

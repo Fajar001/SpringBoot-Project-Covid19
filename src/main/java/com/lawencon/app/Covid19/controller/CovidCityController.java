@@ -18,7 +18,7 @@ import com.lawencon.app.Covid19.model.CovidCity;
 import com.lawencon.app.Covid19.service.CovidCityService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/city")
 public class CovidCityController extends BaseController<CovidCity> {
 
@@ -30,6 +30,28 @@ public class CovidCityController extends BaseController<CovidCity> {
 		List<CovidCity> listCity = new ArrayList<>();
 		try {
 			listCity = covidCityService.findAll();
+		} catch (Exception e) {
+			return new ResponseEntity<>(listCity, HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(listCity, HttpStatus.OK);
+	}
+	
+	@GetMapping("/show/all")
+	public ResponseEntity<?> getListTotal(){
+		List<?> listCity = new ArrayList<>();
+		try {
+			listCity = covidCityService.findAllTotal();
+		} catch (Exception e) {
+			return new ResponseEntity<>(listCity, HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(listCity, HttpStatus.OK);
+	}
+	
+	@GetMapping("/show/{id}")
+	public ResponseEntity<?> getListId(@PathVariable("id") int id){
+		List<CovidCity> listCity = new ArrayList<>();
+		try {
+			listCity = covidCityService.findById(id);
 		} catch (Exception e) {
 			return new ResponseEntity<>(listCity, HttpStatus.BAD_REQUEST);
 		}

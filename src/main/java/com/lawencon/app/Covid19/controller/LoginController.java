@@ -17,7 +17,7 @@ import com.lawencon.app.Covid19.model.Login;
 import com.lawencon.app.Covid19.service.LoginService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/login")
 public class LoginController extends BaseController<Login>{
 	
@@ -33,6 +33,17 @@ public class LoginController extends BaseController<Login>{
 			return new ResponseEntity<List<Login>>(listUser, HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<List<Login>>(listUser, HttpStatus.OK);
+	}
+	
+	@GetMapping("/show/username/{user}")
+	public ResponseEntity<?> getListUsername(@PathVariable("user") String user){
+		List<?> listUser = new ArrayList<>();
+		try {
+			listUser = loginService.findUsername(user);
+		} catch (Exception e) {
+			return new ResponseEntity<>(listUser, HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(listUser, HttpStatus.OK);
 	}
 	
 	@PostMapping("/insert")

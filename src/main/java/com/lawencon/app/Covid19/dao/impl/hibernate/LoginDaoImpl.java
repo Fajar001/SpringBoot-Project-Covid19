@@ -62,4 +62,11 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 		return q.getResultList();
 	}
 
+	@Override
+	public List<?> findByUsername(String user) throws Exception {
+		Query q = em.createQuery("from Login where username = :userParam");
+		q.setParameter("userParam", user);
+		return q.getResultList();
+	}
+
 }

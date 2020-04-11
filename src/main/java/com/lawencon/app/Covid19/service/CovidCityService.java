@@ -6,6 +6,8 @@ import com.lawencon.app.Covid19.model.CovidCity;
 
 public interface CovidCityService {
 	abstract List<CovidCity> findAll() throws Exception;
+	abstract List<?> findAllTotal() throws Exception;
+	abstract List<CovidCity> findById(int id) throws Exception;
 	abstract String insertCity(CovidCity city) throws Exception;
 	abstract String updateCity(int id, String cityName, int caseByCity, int deathsByCity, int recovered) throws Exception;
 	abstract String deleteById(int id) throws Exception;

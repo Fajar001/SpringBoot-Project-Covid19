@@ -43,20 +43,22 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String insertUser(Login login) throws Exception {
-		// TODO Auto-generated method stub
 		return loginDao.insertUser(login);
 	}
 
 	@Override
 	public String update(int id, String user, String pass, String role) throws Exception {
-		// TODO Auto-generated method stub
 		loginDao.update(id, user, pass, role);
 		return "Failed...";
 	}
 
 	@Override
 	public String deleteById(int id) throws Exception {
-		// TODO Auto-generated method stub
 		return loginDao.deleteById(id);
+	}
+
+	@Override
+	public List<?> findUsername(String user) throws Exception {
+		return loginDao.findByUsername(user);
 	}
 }
