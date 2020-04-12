@@ -14,7 +14,6 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 
 	@Override
 	public Login validUser(String user, String pass) throws Exception {
-		// TODO Auto-generated method stub
 		Query q = em.createQuery("from Login where username = : userParam and password = :passParam")
 		.setParameter("userParam", user)
 		.setParameter("passParam", pass);
@@ -23,14 +22,12 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 
 	@Override
 	public String insertUser(Login login) throws Exception {
-		// TODO Auto-generated method stub
 		em.persist(login);
 		return "Succsess to insert";
 	}
 
 	@Override
 	public Login update(int id, String user, String pass, String role) throws Exception {
-		// TODO Auto-generated method stub
 		Query q = em.createQuery("from Login where idLogin = :idParam");
 		q.setParameter("idParam", id);
 		Login log = new Login();
@@ -44,7 +41,6 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 
 	@Override
 	public String deleteById(int id) throws Exception {
-		// TODO Auto-generated method stub
 		Query q = em.createQuery("from Login where idLogin = :idParam");
 		q.setParameter("idParam", id);
 		Login log = new Login();
@@ -57,7 +53,6 @@ public class LoginDaoImpl extends BaseHibernate implements LoginDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Login> findAll() throws Exception {
-		// TODO Auto-generated method stub
 		Query q = em.createQuery("from Login");
 		return q.getResultList();
 	}

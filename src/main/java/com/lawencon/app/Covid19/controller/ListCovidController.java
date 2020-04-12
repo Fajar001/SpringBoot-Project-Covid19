@@ -16,6 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lawencon.app.Covid19.model.ListCovid;
 import com.lawencon.app.Covid19.service.ListCovidService;
 
+/**
+ * 
+ * @author Fajar & Aldhy
+ * BE : Fajar
+ * FE : Aldhy
+ *
+ */
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/Home")
